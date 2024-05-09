@@ -1,0 +1,35 @@
+.paper {
+  max-width: 360px;
+}
+
+.card {
+  padding: 0.5rem;
+}
+
+.button {
+  padding: 8px 18px !important;
+  color: black !important;
+  background-color: #55efc4 !important;
+  width: 100%;
+  text-transform: none !important;
+  box-shadow: none !important;
+  margin: auto 0.5rem !important;
+}
+
+.salary {
+  font-size: 14px !important;
+  font-weight: 400;
+  padding-bottom: 4px !important;
+  color: rgb(77, 89, 106) !important;
+}
+
+.jobDescription {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 250px !important;
+  mask-image: linear-gradient(
+    rgb(255, 255, 255),
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0)
+  );
+}
