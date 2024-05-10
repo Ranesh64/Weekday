@@ -1,9 +1,10 @@
 .paper {
+  /* max-width: 33.3%; */
   max-width: 360px;
 }
 
 .card {
-  padding: 0.5rem;
+  padding: 0.25rem;
 }
 
 .button {
@@ -13,7 +14,6 @@
   width: 100%;
   text-transform: none !important;
   box-shadow: none !important;
-  margin: auto 0.5rem !important;
 }
 
 .salary {
@@ -32,4 +32,10 @@
     rgb(255, 255, 255),
     rgba(255, 255, 255, 0)
   );
+}
+
+.viewMore {
+  position: relative;
+  text-align: center;
+  top: -20px;
 }

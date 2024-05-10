@@ -6,17 +6,31 @@ import {
   CardContent,
   Paper,
   Typography,
+  Link,
 } from "@mui/material";
 import styles from "./Card.module.css";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
 import BoltRoundedIcon from "@mui/icons-material/BoltRounded";
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 
-const JobCard = () => {
+const JobCard = ({ data }) => {
+  const {
+    jobDetailsFromCompany,
+    location,
+    maxJdSalary,
+    minJdSalary,
+    minExp,
+    jobRole,
+    companyName,
+    logoUrl,
+  } = data;
   return (
-    <Paper elevation={2} className={styles.paper}>
+    <Paper elevation={3} className={styles.paper}>
       <Card className={styles.card}>
-        <CardContent>
+        <CardContent
+          component="div"
+          sx={{ display: "flex", flexDirection: "column", rowGap: "6px" }}
+        >
           <Box
             sx={{
               display: "flex",
@@ -37,17 +51,27 @@ const JobCard = () => {
           </Box>
           <Box sx={{ display: "flex", columnGap: 2, alignItems: "center" }}>
             <Box>
-              <Avatar variant="rounded" />
+              <Avatar variant="rounded" src={logoUrl} />
             </Box>
             <Box>
-              <Typography sx={{ fontSize: 12 }}>Company name</Typography>
-              <Typography sx={{ fontSize: 16 }}>Position</Typography>
-              <Typography sx={{ fontSize: 12 }}>Location</Typography>
+              <Typography variant="body2" sx={{ color: "#4D596A" }}>
+                {companyName}
+              </Typography>
+              <Typography variant="body1" sx={{ textTransform: "capitalize" }}>
+                {jobRole} Engineer
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{ textTransform: "capitalize" }}
+              >
+                {location}
+              </Typography>
             </Box>
           </Box>
           <Box sx={{ display: "flex" }}>
             <Typography component="div" className={styles.salary}>
-              Estimated Salary: 10-20 LPA{" "}
+              Estimated Salary: &#x20B9;{" "}
+              {`${minJdSalary ?? "5"}-${maxJdSalary} LPA`}
             </Typography>
 
             <CheckBoxRoundedIcon style={{ fill: "green" }} />
@@ -55,29 +79,23 @@ const JobCard = () => {
           <Box className={styles.jobDescription}>
             <Typography>About Company:</Typography>
             <Typography variant="body2" sx={{ paddingBottom: 0.5 }}>
-              This is a description of the card content. You can add more text
-              or other components here. Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Ipsam sunt aperiam eius, distinctio, aspernatur
-              illo tempora delectus molestias dolorem praesentium deleniti
-              voluptates molestiae, pariatur ut accusamus quo vel error
-              eligendi. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Adipisci, amet recusandae laboriosam distinctio facere odit
-              reiciendis nobis earum assumenda dolorem?
+              {jobDetailsFromCompany}
             </Typography>
           </Box>
-          <Box>
-            <Typography variant="caption">Minimum Experience</Typography>
-            <Typography sx={{ fontSize: 14 }}>3 years</Typography>
+          <Box className={styles.viewMore}>
+            <Link underline="none">View job</Link>
           </Box>
+          <Box>
+            <Typography variant="body2" sx={{ color: "#4D596A" }}>
+              Minimum Experience
+            </Typography>
+            <Typography variant="body1">{minExp ?? "2"} years</Typography>
+          </Box>
+          <Button className={styles.button} variant="contained">
+            {" "}
+            ⚡Easy Apply
+          </Button>
         </CardContent>
-        <Button
-          className={styles.button}
-          variant="contained"
-          startIcon={<BoltRoundedIcon />}
-        >
-          {" "}
-          Easy Apply
-        </Button>
       </Card>
     </Paper>
   );

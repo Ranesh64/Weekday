@@ -18,6 +18,15 @@ const theme = createTheme({
         sx: { borderRadius: "20px" },
       },
     },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          "&:last-child": {
+            paddingBottom: 16, // Override padding for last child
+          },
+        },
+      },
+    },
   },
 });
 
